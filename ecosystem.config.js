@@ -2,7 +2,7 @@ module.exports = {
     apps : [{
       name   : "mevn",
       watch: ['src'],
-      script : "./dist/app.js",
+      script : "./app.js",
       ignore_watch : ["node_modules"]
     }]
   }

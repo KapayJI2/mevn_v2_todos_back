@@ -2,14 +2,15 @@ import express from "express";
 import config from "config";
 import mongoose from "mongoose";
 import cors from "cors";
+import {} from 'dotenv/config';
 import { authRoutes } from "./routes/auth/auth.routes.js";
 import { userRouter } from "./routes/user/user.routes.js";
 import { todoRouter } from "./routes/todos/todos.routes.js";
 import { authMiddleware } from "./middleware/auth.middleware.js";
 
 const app = express();
-const PORT = config.get("port") || 5000;
-const MONGO_DB_URL = config.get("mongoDbUrl");
+const PORT = process.env.PORT || 5000;
+const MONGO_DB_URI = process.env.MONGODB_URI;
 
 app.use(
   cors({
@@ -32,7 +33,7 @@ app.use("/api/todo", authMiddleware, todoRouter);
 
 async function start() {
   try {
-    await mongoose.connect(MONGO_DB_URL, {
+    await mongoose.connect(MONGO_DB_URI, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });

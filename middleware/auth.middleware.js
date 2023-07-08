@@ -11,7 +11,7 @@ export function authMiddleware(req, res, next) {
     if (!token) {
       return res.status(401).json({ message: "Not authorization" });
     }
-    const decoded = jwt.verify(token, config.get("jwtSecret"));
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     next();
   } catch (e) {

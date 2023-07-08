@@ -1,6 +1,0 @@
-{
-  "port": 5000,
-  "mongoDbUrl": "mongodb+srv://user:user@cluster0.iic1p.mongodb.net/levelUp?retryWrites=true&w=majority",
-  "jwtSecret": "kapayji-exam-project-todos",
-  "baseUrl": "http://localhost:5000"
-}

@@ -2,7 +2,6 @@ import bcrypt from "bcryptjs";
 import User from "../../model/users/index.js";
 import validator from "express-validator";
 import jwt from "jsonwebtoken";
-import config from "config";
 const { validationResult } = validator;
 
 export async function registration(req, res) {
@@ -72,7 +71,7 @@ export async function login(req, res) {
     if (!isMatch) {
       return res.status(400).json({ message: "Неверный пароль" });
     }
-    const token = jwt.sign({ userId: user.id }, config.get("jwtSecret"), {
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
     return res.status(200).json({
